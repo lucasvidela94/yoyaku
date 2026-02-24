@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap');
+
+:root {
+  /* Paleta Suiza Médica */
+  --color-bg: #FDFCF8;
+  --color-bg-warm: #F7F5F0;
+  --color-paper: #FFFFFF;
+  --color-text: #1A1A1A;
+  --color-text-muted: #6B6B6B;
+  --color-border: #E0DDD5;
+  --color-border-strong: #1A1A1A;
+  
+  /* Estados médicos */
+  --color-confirmado: #2D5A3D;
+  --color-confirmado-bg: #E8F0E9;
+  --color-pendiente: #B8860B;
+  --color-pendiente-bg: #FDF6E3;
+  --color-atendido: #4A5568;
+  --color-atendido-bg: #EDF2F7;
+  --color-ausente: #C53030;
+  --color-ausente-bg: #FED7D7;
+  --color-riesgo: #C53030;
+  
+  /* Tipografía */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Source Serif 4', serif;
+  
+  /* Espaciado suizo */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-xxl: 4rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+#app, #App {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Utilidades tipográficas */
+.text-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.text-body {
+  font-family: var(--font-body);
+}
+
+.text-mono {
+  font-family: 'SF Mono', Monaco, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Animaciones */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.4s ease-out;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}

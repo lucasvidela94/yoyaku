@@ -1,0 +1,60 @@
+.atraso-display {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  background: var(--color-paper);
+  border: 2px solid var(--color-border);
+}
+
+.atraso-display.atiempo {
+  border-color: var(--color-confirmado);
+}
+
+.atraso-display.leve {
+  border-color: var(--color-pendiente);
+}
+
+.atraso-display.grave {
+  border-color: var(--color-ausente);
+}
+
+.atraso-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.atraso-tiempo {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  line-height: 1;
+}
+
+.tiempo-horas {
+  font-size: 4rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+}
+
+.tiempo-unidad {
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.atraso-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.atraso-indicador {
+  width: 8px;
+  height: 60px;
+  margin-left: auto;
+}
