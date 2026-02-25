@@ -10,6 +10,7 @@ import (
 	"github.com/wailsapp/wails/v2/pkg/runtime"
 	"yoyaku/internal/agenda"
 	"yoyaku/internal/db"
+	"yoyaku/internal/license"
 	"yoyaku/internal/models"
 )
 
@@ -19,7 +20,9 @@ type App struct {
 	turnoRepo    *db.TurnoRepo
 	pacienteRepo *db.PacienteRepo
 	configRepo   *db.ConfigRepo
+	licenseRepo  *db.LicenseRepo
 	agendaSvc    *agenda.Service
+	licenseSvc   *license.Service
 }
 
 func NewApp() *App {
@@ -40,7 +43,9 @@ func (a *App) startup(ctx context.Context) {
 	a.turnoRepo = db.NewTurnoRepo(database)
 	a.pacienteRepo = db.NewPacienteRepo(database)
 	a.configRepo = db.NewConfigRepo(database)
+	a.licenseRepo = db.NewLicenseRepo(database)
 	a.agendaSvc = agenda.NewService(a.turnoRepo, a.pacienteRepo)
+	a.licenseSvc = license.NewService(a.licenseRepo)
 
 	// Seed datos de prueba
 	seedSvc := NewSeedService(database)
@@ -138,4 +143,16 @@ func (a *App) GetConfiguracion() (*models.Configuracion, error) {
 
 func (a *App) GuardarConfiguracion(config *models.Configuracion) error {
 	return a.configRepo.Guardar(config)
+}
+
+func (a *App) ValidarLicencia(key string) (*models.InfoLicencia, error) {
+	return a.licenseSvc.ValidarLicencia(key)
+}
+
+func (a *App) ObtenerInfoLicencia() (*models.InfoLicencia, error) {
+	return a.licenseSvc.ObtenerInfoLicencia()
+}
+
+func (a *App) RequiereActivacion() (bool, error) {
+	return a.licenseSvc.RequiereActivacion()
 }

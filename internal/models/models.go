@@ -65,3 +65,28 @@ type Configuracion struct {
 	HorarioAtencion     string    `json:"horarioAtencion"`
 	UpdatedAt           time.Time `json:"updatedAt"`
 }
+
+type Licencia struct {
+	ID              int64     `json:"id"`
+	LicenseKey      string    `json:"licenseKey"`
+	FechaActivacion time.Time `json:"fechaActivacion"`
+	FechaExpiracion time.Time `json:"fechaExpiracion"`
+	Activa          bool      `json:"activa"`
+	Version         string    `json:"version"`
+}
+
+type EstadoLicencia string
+
+const (
+	LicenciaActiva        EstadoLicencia = "activa"
+	LicenciaExpirada      EstadoLicencia = "expirada"
+	LicenciaNoConfigurada EstadoLicencia = "no_configurada"
+)
+
+type InfoLicencia struct {
+	Estado          EstadoLicencia `json:"estado"`
+	FechaActivacion time.Time      `json:"fechaActivacion,omitempty"`
+	FechaExpiracion time.Time      `json:"fechaExpiracion,omitempty"`
+	DiasRestantes   int            `json:"diasRestantes"`
+	Mensaje         string         `json:"mensaje"`
+}

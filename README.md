@@ -1,20 +1,59 @@
-# README
+# Yoyaku
 
-## About
+Medical appointment scheduling desktop application built with Go, Wails, and React. Features offline-first architecture with local SQLite database and cryptographic license validation.
 
-This is the official Wails React template.
+## Stack
 
-You can configure the project by editing `wails.json`. More information about the project settings can be found
-here: https://wails.io/docs/reference/project-config
+- **Backend**: Go 1.24, Wails v2
+- **Frontend**: React 18, Vite, React Router v7
+- **Database**: SQLite (modernc.org/sqlite)
+- **Testing**: Vitest, Testing Library, Go test
+- **Build**: Wails CLI
 
-## Live Development
+## Project Structure
 
-To run in live development mode, run `wails dev` in the project directory. This will run a Vite development
-server that will provide very fast hot reload of your frontend changes. If you want to develop in a browser
-and have access to your Go methods, there is also a dev server that runs on http://localhost:34115. Connect
-to this in your browser, and you can call your Go code from devtools.
+```
+yoyaku/
+├── cmd/license-generator/    # CLI tool for license generation
+├── frontend/
+│   ├── src/features/         # Feature-based architecture
+│   │   ├── agenda/           # Appointment scheduling
+│   │   ├── pacientes/        # Patient management
+│   │   ├── configuracion/    # Settings management
+│   │   └── license/          # License activation UI
+│   └── test/                 # Test setup
+├── internal/
+│   ├── agenda/               # Business logic
+│   ├── db/                   # Data access layer
+│   ├── license/              # License validation (SHA-256)
+│   └── models/               # Domain models
+└── docs/                     # Documentation
+```
 
-## Building
+## Key Features
 
-To build a redistributable, production mode package, use `wails build`.
-# yoyaku
+- Offline-first license system with local cryptographic validation
+- Feature-based frontend architecture
+- SQLite with modernc driver (CGO-free)
+- Comprehensive test coverage (backend + frontend)
+- Desktop-native UI via Wails/WebView2
+
+## Development
+
+```bash
+# Install dependencies
+cd frontend && npm install
+
+# Run dev server
+wails dev
+
+# Run tests
+./test.sh
+
+# Build production
+wails build
+```
+
+## License
+
+Proprietary

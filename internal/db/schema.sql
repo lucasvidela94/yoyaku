@@ -52,6 +52,16 @@ CREATE TABLE IF NOT EXISTS configuracion (
 -- Insertar configuración por defecto si no existe
 INSERT OR IGNORE INTO configuracion (id) VALUES (1);
 
+-- Tabla de licencias
+CREATE TABLE IF NOT EXISTS licencias (
+    id INTEGER PRIMARY KEY CHECK (id = 1),
+    license_key TEXT,
+    fecha_activacion DATETIME,
+    fecha_expiracion DATETIME,
+    activa BOOLEAN DEFAULT 0,
+    version TEXT DEFAULT '1.0.0'
+);
+
 -- Índices para búsquedas frecuentes
 CREATE INDEX IF NOT EXISTS idx_turnos_fecha ON turnos(fecha);
 CREATE INDEX IF NOT EXISTS idx_turnos_paciente ON turnos(paciente_id);

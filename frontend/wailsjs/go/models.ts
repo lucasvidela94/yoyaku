@@ -186,6 +186,46 @@ export namespace models {
 		    return a;
 		}
 	}
+	export class InfoLicencia {
+	    estado: string;
+	    // Go type: time
+	    fechaActivacion?: any;
+	    // Go type: time
+	    fechaExpiracion?: any;
+	    diasRestantes: number;
+	    mensaje: string;
+	
+	    static createFrom(source: any = {}) {
+	        return new InfoLicencia(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.estado = source["estado"];
+	        this.fechaActivacion = this.convertValues(source["fechaActivacion"], null);
+	        this.fechaExpiracion = this.convertValues(source["fechaExpiracion"], null);
+	        this.diasRestantes = source["diasRestantes"];
+	        this.mensaje = source["mensaje"];
+	    }
+	
+		convertValues(a: any, classs: any, asMap: boolean = false): any {
+		    if (!a) {
+		        return a;
+		    }
+		    if (a.slice && a.map) {
+		        return (a as any[]).map(elem => this.convertValues(elem, classs));
+		    } else if ("object" === typeof a) {
+		        if (asMap) {
+		            for (const key of Object.keys(a)) {
+		                a[key] = new classs(a[key]);
+		            }
+		            return a;
+		        }
+		        return new classs(a);
+		    }
+		    return a;
+		}
+	}
 	
 
 }

@@ -61,3 +61,15 @@ export function GetTurnosDelDia(arg1) {
 export function GuardarConfiguracion(arg1) {
   return window['go']['main']['App']['GuardarConfiguracion'](arg1);
 }
+
+export function ObtenerInfoLicencia() {
+  return window['go']['main']['App']['ObtenerInfoLicencia']();
+}
+
+export function RequiereActivacion() {
+  return window['go']['main']['App']['RequiereActivacion']();
+}
+
+export function ValidarLicencia(arg1) {
+  return window['go']['main']['App']['ValidarLicencia'](arg1);
+}

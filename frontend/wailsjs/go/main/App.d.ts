@@ -31,3 +31,9 @@ export function GetTurno(arg1:number):Promise<models.Turno>;
 export function GetTurnosDelDia(arg1:string):Promise<models.AgendaDia>;
 
 export function GuardarConfiguracion(arg1:models.Configuracion):Promise<void>;
+
+export function ObtenerInfoLicencia():Promise<models.InfoLicencia>;
+
+export function RequiereActivacion():Promise<boolean>;
+
+export function ValidarLicencia(arg1:string):Promise<models.InfoLicencia>;
